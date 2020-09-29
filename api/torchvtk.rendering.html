@@ -194,26 +194,29 @@
 
 <dl class="method">
 <dt id="torchvtk.rendering.VolumeRaycaster.forward">
-<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">vol</em>, <em class="sig-param">tfm=None</em>, <em class="sig-param">output_alpha=False</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renders a volume (using given transforms) using raycasting.</p>
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">vol</em>, <em class="sig-param">view_mat=None</em>, <em class="sig-param">output_alpha=False</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a volume (with given view matrix) using raycasting.
+:param vol: Batch of volumes to render. Shape (BS, C, D, H, W)
+:type vol: Tensor
+:param view_mat: A (BS, 4, 4) transformation matrix representing the view matrix..
+:type view_mat: Tensor or function
+:param output_alpha: Whether to output RGBA instead of RGB. Default is False
+:type output_alpha: bool</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>vol</strong> (<em>Tensor</em>) – Batch of volumes to render. Shape (BS, C, D, H, W)</p></li>
-<li><p><strong>tfm</strong> (<em>Tensor</em><em> or </em><em>function</em>) – Either a (BS, 4, 4) transformation matrix or a function
-that transforms sample coordinates of shape <cite>ray_samples, height, width, 4</cite>.</p></li>
-<li><p><strong>output_alpha</strong> (<em>bool</em>) – Whether to output RGBA instead of RGB. Default is False</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Batch of projected images of shape (BS, 3, H, W) with RGB (and optionally Alpha) channels</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Batch of raycast images of shape (BS, 3, H, W) with RGB (and optionally Alpha) channels</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
+<dt id="torchvtk.rendering.VolumeRaycaster.get_camera_matrix">
+<code class="sig-name descname">get_camera_matrix</code><span class="sig-paren">(</span><em class="sig-param">look_from</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_camera_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="torchvtk.rendering.VolumeRaycaster.get_coord_grid">
-<code class="sig-name descname">get_coord_grid</code><span class="sig-paren">(</span><em class="sig-param">z</em>, <em class="sig-param">y</em>, <em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_coord_grid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_coord_grid</code><span class="sig-paren">(</span><em class="sig-param">z</em>, <em class="sig-param">y</em>, <em class="sig-param">x</em>, <em class="sig-param">perspective=False</em>, <em class="sig-param">fovy=0.52</em>, <em class="sig-param">ar=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_coord_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the samples given linspaces of the correct sizes for each spatial dimension.</p>
 </dd></dl>
 

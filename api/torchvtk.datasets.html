@@ -355,12 +355,14 @@ This function can work multithreaded.</p>
 <dt id="torchvtk.datasets.dict_collate_fn">
 <code class="sig-prename descclassname">torchvtk.datasets.</code><code class="sig-name descname">dict_collate_fn</code><span class="sig-paren">(</span><em class="sig-param">items</em>, <em class="sig-param">key_filter=None</em>, <em class="sig-param">stack_tensors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.datasets.dict_collate_fn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Collate function for dictionary data</p>
+<p>This stacks tensors only if they are stackable, meaning they are of the same shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>items</strong> (<em>list</em>) – List of individual items for a Dataset</p></li>
 <li><p><strong>key_filter</strong> (<em>list of str</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – A list of keys to filter the dict data. Defaults to None.</p></li>
 <li><p><strong>stack_tensors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wether to stack dict entries of type torch.Tensors. Disable if you have unstackable tensors. They will be stacked as a list. Defaults to True.</p></li>
+<li><p><strong>unstackable_to_list</strong> (<em>bool</em><em>, </em><em>optional</em>) – Checks all tensors to be stacked. If they cannot be stacked, they are returned as list. Defaults to True. Asserts same shapes when False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

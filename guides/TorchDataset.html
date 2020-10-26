@@ -305,12 +305,12 @@ This function can work multithreaded.</p>
 
 <dl class="method">
 <dt>
-<code class="sig-name descname">preload</code><span class="sig-paren">(</span><em class="sig-param">device=torch.device</em>, <em class="sig-param">num_workers=0</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">preload</code><span class="sig-paren">(</span><em class="sig-param">device='cpu'</em>, <em class="sig-param">num_workers=0</em><span class="sig-paren">)</span></dt>
 <dd><p>Preloads the dataset into memory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>device</strong> (<em>torch.device</em><em>, </em><em>optional</em>) – Device to store the dataset on. Defaults to torch.device(‘cpu’).</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em><em>, </em><em>optional</em>) – Device to store the dataset on. Defaults to ‘cpu’.</p></li>
 <li><p><strong>num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of workers to load items into memory. Defaults to 0.</p></li>
 </ul>
 </dd>

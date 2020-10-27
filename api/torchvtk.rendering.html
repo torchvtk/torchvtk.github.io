@@ -173,60 +173,6 @@
 <h1>torchvtk.rendering<a class="headerlink" href="#torchvtk-rendering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="volumeraycaster">
 <h2>VolumeRaycaster<a class="headerlink" href="#volumeraycaster" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="torchvtk.rendering.VolumeRaycaster">
-<em class="property">class </em><code class="sig-prename descclassname">torchvtk.rendering.</code><code class="sig-name descname">VolumeRaycaster</code><span class="sig-paren">(</span><em class="sig-param">density_factor=100.0</em>, <em class="sig-param">ray_samples=256</em>, <em class="sig-param">resolution=(224</em>, <em class="sig-param">224)</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
-<dl class="method">
-<dt id="torchvtk.rendering.VolumeRaycaster.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">density_factor=100.0</em>, <em class="sig-param">ray_samples=256</em>, <em class="sig-param">resolution=(224</em>, <em class="sig-param">224)</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initializes differentiable raycasting layer</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>density_factor</strong> (<em>float</em>) – scales the overall density</p></li>
-<li><p><strong>ray_samples</strong> (<em>int</em>) – Number of samples along the rays</p></li>
-<li><p><strong>resolution</strong> (<em>int</em><em>, </em><em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – Tuple describing width and height of the render. A single int produces a square image</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="torchvtk.rendering.VolumeRaycaster.forward">
-<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">vol</em>, <em class="sig-param">view_mat=None</em>, <em class="sig-param">output_alpha=False</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renders a volume (with given view matrix) using raycasting.
-:param vol: Batch of volumes to render. Shape (BS, C, D, H, W)
-:type vol: Tensor
-:param view_mat: A (BS, 4, 4) transformation matrix representing the view matrix..
-:type view_mat: Tensor or function
-:param output_alpha: Whether to output RGBA instead of RGB. Default is False
-:type output_alpha: bool</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Batch of raycast images of shape (BS, 3, H, W) with RGB (and optionally Alpha) channels</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="torchvtk.rendering.VolumeRaycaster.get_camera_matrix">
-<code class="sig-name descname">get_camera_matrix</code><span class="sig-paren">(</span><em class="sig-param">look_from</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_camera_matrix" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="torchvtk.rendering.VolumeRaycaster.get_coord_grid">
-<code class="sig-name descname">get_coord_grid</code><span class="sig-paren">(</span><em class="sig-param">z</em>, <em class="sig-param">y</em>, <em class="sig-param">x</em>, <em class="sig-param">perspective=False</em>, <em class="sig-param">fovy=0.52</em>, <em class="sig-param">ar=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_coord_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the samples given linspaces of the correct sizes for each spatial dimension.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="torchvtk.rendering.VolumeRaycaster.get_perspective_coord_grid">
-<code class="sig-name descname">get_perspective_coord_grid</code><span class="sig-paren">(</span><em class="sig-param">view_mat</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.rendering.VolumeRaycaster.get_perspective_coord_grid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 </div>
 </div>
 

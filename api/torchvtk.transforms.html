@@ -103,6 +103,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#dicttransform">DictTransform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#composite">Composite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lambda">Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#noop">Noop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#normalizeminmax">NormalizeMinMax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#normalizestandardize">NormalizeStandardize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#crop">Crop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#resize">Resize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#randflip">RandFlip</a></li>
@@ -278,6 +281,111 @@
 <dl class="method">
 <dt id="torchvtk.transforms.Lambda.transform">
 <code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transformation Method, must be overwritten by every SubClass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="noop">
+<h2>Noop<a class="headerlink" href="#noop" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchvtk.transforms.Noop">
+<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">Noop</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Noop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torchvtk.transforms.dict_transform.DictTransform</span></code></p>
+<dl class="method">
+<dt id="torchvtk.transforms.Noop.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Noop.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just sets device and dtype, does nothing else.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>torch.device</em>) – The device to move the tensors on. Defaults to not changing anything</p></li>
+<li><p><strong>dtype</strong> (<em>torch.dtype</em>) – The dtype to move the device to. Defaults to not changing anything</p></li>
+<li><p><strong>kwargs</strong> – Arguments for <cite>DictTransform</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.Noop.override_apply_on">
+<code class="sig-name descname">override_apply_on</code><span class="sig-paren">(</span><em class="sig-param">apply_on</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Noop.override_apply_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.Noop.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Noop.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transformation Method, must be overwritten by every SubClass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="normalizeminmax">
+<h2>NormalizeMinMax<a class="headerlink" href="#normalizeminmax" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchvtk.transforms.NormalizeMinMax">
+<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">NormalizeMinMax</code><span class="sig-paren">(</span><em class="sig-param">min=0.0</em>, <em class="sig-param">max=1.0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torchvtk.transforms.dict_transform.DictTransform</span></code></p>
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeMinMax.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">min=0.0</em>, <em class="sig-param">max=1.0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes tensors to a set min-max range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min</strong> (<em>float</em><em>, </em><em>optional</em>) – New minimum value. Defaults to 0.0.</p></li>
+<li><p><strong>max</strong> (<em>float</em><em>, </em><em>optional</em>) – New maximum value. Defaults to 1.0.</p></li>
+<li><p><strong>kwargs</strong> – Arguments for <cite>DictTransform</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeMinMax.override_apply_on">
+<code class="sig-name descname">override_apply_on</code><span class="sig-paren">(</span><em class="sig-param">apply_on</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax.override_apply_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeMinMax.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transformation Method, must be overwritten by every SubClass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="normalizestandardize">
+<h2>NormalizeStandardize<a class="headerlink" href="#normalizestandardize" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="torchvtk.transforms.NormalizeStandardize">
+<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">NormalizeStandardize</code><span class="sig-paren">(</span><em class="sig-param">mean=0.0</em>, <em class="sig-param">std=1.0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torchvtk.transforms.dict_transform.DictTransform</span></code></p>
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeStandardize.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">mean=0.0</em>, <em class="sig-param">std=1.0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes tensors to have a set mean and standard deviation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>float</em><em>, </em><em>optional</em>) – New mean of the sample. Defaults to 0.0.</p></li>
+<li><p><strong>std</strong> (<em>float</em><em>, </em><em>optional</em>) – New standard deviation of the sample. Defaults to 1.0.</p></li>
+<li><p><strong>kwargs</strong> – Arguments for <cite>DictTransform</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeStandardize.override_apply_on">
+<code class="sig-name descname">override_apply_on</code><span class="sig-paren">(</span><em class="sig-param">apply_on</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize.override_apply_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="torchvtk.transforms.NormalizeStandardize.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 

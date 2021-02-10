@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>torchvtk.transforms &mdash; torchvtk 0.4.1 documentation</title>
+  <title>torchvtk.transforms &mdash; torchvtk 0.4.2 documentation</title>
   
 
   
@@ -257,16 +257,17 @@
 <h2>Lambda<a class="headerlink" href="#lambda" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="torchvtk.transforms.Lambda">
-<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">Lambda</code><span class="sig-paren">(</span><em class="sig-param">func</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">Lambda</code><span class="sig-paren">(</span><em class="sig-param">func</em>, <em class="sig-param">as_list=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torchvtk.transforms.dict_transform.DictTransform</span></code></p>
 <dl class="method">
 <dt id="torchvtk.transforms.Lambda.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">func</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">func</em>, <em class="sig-param">as_list=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a given function, wrapped in a <cite>DictTransform</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>func</strong> (<em>function</em>) – The function to be executed</p></li>
+<li><p><strong>as_list</strong> (<em>bool</em>) – Wether all inputs specified in <cite>apply_on</cite> are passed as a list, or as separate items. Defaults to False (separate items).</p></li>
 <li><p><strong>kwargs</strong> – Arguments for <cite>DictTransform</cite></p></li>
 </ul>
 </dd>
@@ -280,7 +281,7 @@
 
 <dl class="method">
 <dt id="torchvtk.transforms.Lambda.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Lambda.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -350,7 +351,7 @@
 
 <dl class="method">
 <dt id="torchvtk.transforms.NormalizeMinMax.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeMinMax.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -385,7 +386,7 @@
 
 <dl class="method">
 <dt id="torchvtk.transforms.NormalizeStandardize.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.NormalizeStandardize.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -426,7 +427,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.Crop.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Crop.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Crop.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the Center Crop.</p>
 </dd></dl>
 
@@ -437,17 +438,18 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 <h2>Resize<a class="headerlink" href="#resize" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="torchvtk.transforms.Resize">
-<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">Resize</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">mode='trilinear'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">torchvtk.transforms.</code><code class="sig-name descname">Resize</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">mode='trilinear'</em>, <em class="sig-param">is_batch=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torchvtk.transforms.dict_transform.DictTransform</span></code></p>
 <dl class="method">
 <dt id="torchvtk.transforms.Resize.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">mode='trilinear'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">mode='trilinear'</em>, <em class="sig-param">is_batch=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resizes volumes to a given size or by a given factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>3-tuple/list</em><em> or </em><em>float</em>) – The new spatial dimensions in a tuple or a factor as scalar</p></li>
+<li><p><strong>size</strong> (<em>tuple/list</em><em> or </em><em>float</em>) – The new spatial dimensions in a tuple or a factor as scalar</p></li>
 <li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Resampling mode. See PyTorch’s <cite>torch.nn.functional.interpolate</cite>. Defaults to ‘trilinear’.</p></li>
+<li><p><strong>is_batch</strong> (<em>bool</em>) – Wether the data passed in here already has a batch dimension (cannot be inferred if <cite>size</cite> is given as scalar). Defaults to False.</p></li>
 <li><p><strong>kwargs</strong> – Arguments for <cite>DictTransform</cite></p></li>
 </ul>
 </dd>
@@ -461,7 +463,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.Resize.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.Resize.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -497,7 +499,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.RandFlip.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.RandFlip.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.RandFlip.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -532,7 +534,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.RandPermute.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.RandPermute.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.RandPermute.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transformation Method, must be overwritten by every SubClass.</p>
 </dd></dl>
 
@@ -568,7 +570,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.GaussianBlur.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.GaussianBlur.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.GaussianBlur.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the Blur using a 3D Convolution.</p>
 </dd></dl>
 
@@ -603,7 +605,7 @@ kwargs: Arguments for <cite>DictTransform</cite>.</p>
 
 <dl class="method">
 <dt id="torchvtk.transforms.GaussianNoise.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.GaussianNoise.transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">items</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.transforms.GaussianNoise.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the Noise onto the images. Variance is controlled by the noise_variance parameter.</p>
 </dd></dl>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>torchvtk.datasets &mdash; torchvtk 0.4.3 documentation</title>
+  <title>torchvtk.datasets &mdash; torchvtk 0.4.4 documentation</title>
   
 
   
@@ -271,7 +271,7 @@ This function can work multithreaded.</p>
 
 <dl class="method">
 <dt id="torchvtk.datasets.TorchDataset.tile">
-<code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param">keys_to_tile</em>, <em class="sig-param">tile_sz=128</em>, <em class="sig-param">overlap=2</em>, <em class="sig-param">dim=3</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.datasets.TorchDataset.tile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param">keys_to_tile</em>, <em class="sig-param">tile_sz=128</em>, <em class="sig-param">overlap=2</em>, <em class="sig-param">dim=3</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#torchvtk.datasets.TorchDataset.tile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the Dataset to a Tiled Dataset, drawing only parts of the data
 Since the data needs to be loaded to determine the number of tiles, a tile is drawn randomly after loading the volume, Without guaranteeing full coverage.</p>
 <dl class="field-list simple">

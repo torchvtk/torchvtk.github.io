@@ -373,7 +373,7 @@ The <code class="docutils literal notranslate"><span class="pre">dict_collate_fn
 <h3>dict_collate_fn<a class="headerlink" href="#dict-collate-fn" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt>
-<code class="sig-prename descclassname">torchvtk.datasets.</code><code class="sig-name descname">dict_collate_fn</code><span class="sig-paren">(</span><em class="sig-param">items</em>, <em class="sig-param">key_filter=None</em>, <em class="sig-param">stack_tensors=True</em>, <em class="sig-param">convert_np=True</em>, <em class="sig-param">convert_numbers=True</em><span class="sig-paren">)</span></dt>
+<code class="sig-prename descclassname">torchvtk.datasets.</code><code class="sig-name descname">dict_collate_fn</code><span class="sig-paren">(</span><em class="sig-param">items</em>, <em class="sig-param">key_filter=None</em>, <em class="sig-param">stack_tensors=True</em>, <em class="sig-param">convert_np=True</em>, <em class="sig-param">convert_numbers=True</em>, <em class="sig-param">warn_when_unstackable=True</em><span class="sig-paren">)</span></dt>
 <dd><p>Collate function for dictionary data</p>
 <p>This stacks tensors only if they are stackable, meaning they are of the same shape.</p>
 <dl class="field-list simple">
@@ -384,6 +384,7 @@ The <code class="docutils literal notranslate"><span class="pre">dict_collate_fn
 <li><p><strong>stack_tensors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wether to stack dict entries of type torch.Tensors. Disable if you have unstackable tensors. They will be stacked as a list. Defaults to True.</p></li>
 <li><p><strong>convert_np</strong> (<em>bool</em><em>, </em><em>optional</em>) – Convert NumPy arrays to torch.Tensors and stack them. Defaults to True.</p></li>
 <li><p><strong>convert_numbers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Converts standard Python numbers to torch.Tensors and stacks them. Defaults to True.</p></li>
+<li><p><strong>warn_when_unstackable</strong> (<em>bool</em><em>, </em><em>list of str</em><em>, </em><em>optional</em>) – If True, prints a warning when a set of Tensors is unstackable. You can also specify a list of keys for which to print the warning. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
